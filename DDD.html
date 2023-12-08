@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.3.7.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		pre { font-family: "Liberation Mono", monospace; font-size: 10pt; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;base href=&quot;https://swapnadabburi.github.io/swapna-web1/&quot;&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Drag and Drop Game&lt;/title&gt;
+  &lt;style&gt;
+    /* CSS styling for the background */
+    body {
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    /* CSS styling for the header */
+    .header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    /* CSS styling for the game container */
+    .game-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    /* CSS styling for the draggable items */
+    .draggable-item {
+      width: 80px;
+      height: 80px;
+      background-color: #fff;
+      border: 2px solid #333;
+      border-radius: 5px;
+      margin: 10px;
+      cursor: move;
+    }
+    /* CSS styling for the game score */
+    .game-score {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 24px;
+    }
+    /* CSS styling for the footer */
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;h1&gt;Drag and Drop Game&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;game-container&quot;&gt;
+    &lt;div class=&quot;draggable-item&quot; draggable=&quot;true&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;draggable-item&quot; draggable=&quot;true&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;draggable-item&quot; draggable=&quot;true&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;draggable-item&quot; draggable=&quot;true&quot;&gt;&lt;/div&gt;
+    &lt;!-- Add more draggable items here--&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;game-score&quot;&gt;
+    Score: &lt;span id=&quot;score&quot;&gt;0&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;footer&quot;&gt;
+    &lt;p&gt;Drag and drop the items to play the game.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    // JavaScript code for the drag and drop game
+    var score = 0;
+    var draggableItems = document.getElementsByClassName('draggable-item');
+    var scoreElement = document.getElementById('score');
+
+    // Add event listeners for drag and drop events
+    for (var i = 0; i &lt; draggableItems.length; i++) {
+      var item = draggableItems[i];
+      item.addEventListener('dragstart', dragStart);
+      item.addEventListener('dragover', dragOver);
+      item.addEventListener('drop', dragDrop);
+    }
+
+    function dragStart(event) {
+      event.dataTransfer.setData('text/plain', event.target.id);
+    }
+
+    function dragOver(event) {
+      event.preventDefault();
+    }
+
+    function dragDrop(event) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData('text/plain');
+      var draggedItem = document.getElementById(data);
+
+      // Increment score when item is dropped
+      score++;
+      scoreElement.innerHTML = score;
+
+      // Remove the item from the game container
+      draggedItem.remove();
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
